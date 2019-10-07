@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  database: rails_jwt_development
+  host: localhost
+  min_messages: WARNING
+
+test:
+  adapter: postgresql
+  database: rails_jwt_test
+  host: localhost
+  min_messages: WARNING
+
+production:
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
