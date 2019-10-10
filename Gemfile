@@ -12,6 +12,7 @@ gem 'active_model_serializers'
 gem 'redis', '~> 4.0'
 gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
+gem "lograge"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
@@ -19,6 +20,7 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "better_errors"
+  gem "rack-mini-profiler"
 end
 
 group :development do

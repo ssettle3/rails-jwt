@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  before_action :allow_profiler_in_envs
+
   def not_found
     render json: { error: 'not_found' }
   end
@@ -14,6 +16,14 @@ class ApplicationController < ActionController::API
       render json: { errors: e.message }, status: :unauthorized
     rescue JWT::DecodeError => e
       render json: { errors: e.message }, status: :unauthorized
+    end
+  end
+
+  private
+
+   def allow_profiler_in_envs
+    if Rails.env.qa? || Rails.env.development?
+      Rack::MiniProfiler.authorize_request
     end
   end
 end
